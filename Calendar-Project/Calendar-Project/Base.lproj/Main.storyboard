@@ -82,10 +82,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="+"/>
                             </button>
+                            <connections>
+                                <action selector="btnAdd:" destination="BYZ-38-t0r" id="zeZ-IP-lOo"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="btnAdd" destination="GLY-1d-wa0" id="zLI-sD-0gD"/>
                         <outlet property="calendar" destination="qei-U1-5gG" id="Ogb-nw-aXn"/>
                         <outlet property="calendarHeightConstraint" destination="Aje-4D-T1o" id="a4G-al-skU"/>
                         <outlet property="viewInfo" destination="b4S-UZ-Baf" id="j2G-8L-1QF"/>

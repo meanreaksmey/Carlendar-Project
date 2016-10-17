@@ -18,7 +18,11 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
+    @IBAction func btnAdd(_ sender: AnyObject) {
+        print("==============")
+    }
 
+  
     
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
