@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+var table1 = TableViewController()
 
 class TableViewController: UITableViewController {
     
@@ -16,6 +16,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.reloadData()
+        table1 = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,9 +42,6 @@ class TableViewController: UITableViewController {
         cell.lbTime.text = valueToPass
         
         return cell
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
 }

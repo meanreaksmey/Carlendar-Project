@@ -24,6 +24,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     @IBAction func btnAdd(_ sender: AnyObject) {
         print("==============")
     }
+    var data = [String]()
     
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -35,6 +36,8 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     let datesWithCat = ["2015/05/05","2015/06/05","2015/07/05","2015/08/05","2015/09/05","2015/10/05","2015/11/05","2015/12/05","2016/01/06",
                         "2016/02/06","2016/03/06","2016/04/06","2016/05/06","2016/06/06","2016/07/06"]
     
+    var someInts:[Int] = [10, 20, 30]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,11 +45,8 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         self.calendar.select(self.formatter.date(from: "2015/10/10")!)
         self.calendar.scopeGesture.isEnabled = true
         self.viewInfo.alpha = 0
-        
-        
     }
     func fontAwesomeToImage(_ icon: FAKIcon, size:CGFloat = 15, color:UIColor = UIColor.white)->UIImage{
-        
         let cogIcon = icon
         cogIcon.addAttribute(NSForegroundColorAttributeName, value: color)
         let iconImg = cogIcon.image(with: CGSize(width: size, height: size))
@@ -54,20 +54,13 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     }
     func addSubButton(){
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: fontAwesomeToImage(FAKFontAwesome.plusIcon(withSize: 20),size: 20), style: .plain, target: self, action: #selector(self.startAction))
-        
-        
     }
     func startAction() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         let nvc = UINavigationController(rootViewController: vc)
         nvc.modalPresentationStyle = .overCurrentContext
         self.navigationController?.present (nvc, animated: true, completion: nil)
-        
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-//        //        let nvc = UINavigationController(rootViewController: vc)
-//        //        nvc.modalPresentationStyle = .overCurrentContext
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
@@ -88,7 +81,6 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         
         
     }
-    var i = 1
     func calendar(_ calendar: FSCalendar, didSelect date: Date) {
         //        NSLog("calendar did select date \(self.formatter.string(from: date))")
         
@@ -96,6 +88,8 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         self.viewInfo.alpha = 1
         addSubButton()
         valueToPass = self.formatter.string(from: date)
+        table1.tableView.reloadData()
+        
         
     }
     
@@ -106,7 +100,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let day: Int! = self.gregorian.component(.day, from: date)
-        return [13,24].contains(day) ? UIImage(named: "icon_cat") : nil
+        return someInts.contains(day) ? UIImage(named: "icon_cat") : nil
     }
     
     // delay

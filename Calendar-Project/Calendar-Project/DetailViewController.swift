@@ -27,11 +27,6 @@ class DetailViewController: UIViewController {
         nvc.modalPresentationStyle = .overCurrentContext
         self.navigationController?.present (nvc, animated: true, completion: nil)
         
-        //        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        //        //        let nvc = UINavigationController(rootViewController: vc)
-        //        //        nvc.modalPresentationStyle = .overCurrentContext
-        //        self.navigationController?.pushViewController(vc, animated: true)
-        //
     }
     
 }
