@@ -1,12 +1,26 @@
 PODS:
+  - FontAwesomeKit/Core (2.2.1)
+  - FontAwesomeKit/FontAwesome (2.2.1):
+    - FontAwesomeKit/Core
   - FSCalendar (2.3.3)
 
 DEPENDENCIES:
+  - FontAwesomeKit/FontAwesome (from `https://github.com/PrideChung/FontAwesomeKit.git`)
   - FSCalendar
 
+EXTERNAL SOURCES:
+  FontAwesomeKit:
+    :git: https://github.com/PrideChung/FontAwesomeKit.git
+
+CHECKOUT OPTIONS:
+  FontAwesomeKit:
+    :commit: ffcc61b71c5ae5196705d3486e20e5391fb9396c
+    :git: https://github.com/PrideChung/FontAwesomeKit.git
+
 SPEC CHECKSUMS:
+  FontAwesomeKit: 3614979b3dbb0ec3f7fac1bd760b91f66c31db67
   FSCalendar: 430254999f6285bb5ccf0bb0b124b1953ad56768
 
-PODFILE CHECKSUM: 30731eef188087807595f783f8fccc40fbbcd3b6
+PODFILE CHECKSUM: 6b1171f07b49899bd4ea56879b84d42d8203557b
 
 COCOAPODS: 1.1.0.rc.2

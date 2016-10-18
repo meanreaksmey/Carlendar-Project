@@ -15,6 +15,8 @@
 		6C6443CD1DB5210D004ECC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C6443CB1DB5210D004ECC7D /* LaunchScreen.storyboard */; };
 		6C6443D81DB5210D004ECC7D /* Calendar_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6443D71DB5210D004ECC7D /* Calendar_ProjectTests.swift */; };
 		6C6443E31DB5210D004ECC7D /* Calendar_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6443E21DB5210D004ECC7D /* Calendar_ProjectUITests.swift */; };
+		B2EA1C5B1DB5B03B00E63438 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EA1C5A1DB5B03B00E63438 /* TableViewController.swift */; };
+		B2EA1C631DB5FA4200E63438 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EA1C621DB5FA4200E63438 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		6C6443DE1DB5210D004ECC7D /* Calendar-ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calendar-ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C6443E21DB5210D004ECC7D /* Calendar_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_ProjectUITests.swift; sourceTree = "<group>"; };
 		6C6443E41DB5210D004ECC7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2EA1C5A1DB5B03B00E63438 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		B2EA1C621DB5FA4200E63438 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 			children = (
 				6C6443C21DB5210D004ECC7D /* AppDelegate.swift */,
 				6C6443C41DB5210D004ECC7D /* ViewController.swift */,
+				B2EA1C5A1DB5B03B00E63438 /* TableViewController.swift */,
+				B2EA1C621DB5FA4200E63438 /* DetailViewController.swift */,
 				6C6443C61DB5210D004ECC7D /* Main.storyboard */,
 				6C6443C91DB5210D004ECC7D /* Assets.xcassets */,
 				6C6443CB1DB5210D004ECC7D /* LaunchScreen.storyboard */,
@@ -335,7 +341,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C6443C51DB5210D004ECC7D /* ViewController.swift in Sources */,
+				B2EA1C5B1DB5B03B00E63438 /* TableViewController.swift in Sources */,
 				6C6443C31DB5210D004ECC7D /* AppDelegate.swift in Sources */,
+				B2EA1C631DB5FA4200E63438 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

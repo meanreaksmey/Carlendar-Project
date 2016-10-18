@@ -8,21 +8,22 @@
 
 import UIKit
 import FSCalendar
+import FontAwesomeKit
 
+var valueToPass:String!
 
 class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate{
-
+    
+    
     @IBOutlet weak var viewInfo: UIView!
     @IBOutlet weak var btnAdd: UIBarButtonItem!
     
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
-
+    
     @IBAction func btnAdd(_ sender: AnyObject) {
         print("==============")
     }
-
-  
     
     private let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -39,26 +40,35 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         
         self.calendar.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
         self.calendar.select(self.formatter.date(from: "2015/10/10")!)
-        //        self.calendar.scope = .week
         self.calendar.scopeGesture.isEnabled = true
-        self.viewInfo.isHidden = true
-       
+        self.viewInfo.alpha = 0
         
-        
-        //        calendar.allowsMultipleSelection = true
-        
-        // Uncomment this to test month->week and week->month transition
-        /*
-         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(2.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
-         self.calendar.setScope(.Week, animated: true)
-         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (Int64)(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
-         self.calendar.setScope(.Month, animated: true)
-         }
-         }
-         */
         
     }
-    
+    func fontAwesomeToImage(_ icon: FAKIcon, size:CGFloat = 15, color:UIColor = UIColor.white)->UIImage{
+        
+        let cogIcon = icon
+        cogIcon.addAttribute(NSForegroundColorAttributeName, value: color)
+        let iconImg = cogIcon.image(with: CGSize(width: size, height: size))
+        return iconImg!
+    }
+    func addSubButton(){
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: fontAwesomeToImage(FAKFontAwesome.plusIcon(withSize: 20),size: 20), style: .plain, target: self, action: #selector(self.startAction))
+        
+        
+    }
+    func startAction() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalPresentationStyle = .overCurrentContext
+        self.navigationController?.present (nvc, animated: true, completion: nil)
+        
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+//        //        let nvc = UINavigationController(rootViewController: vc)
+//        //        nvc.modalPresentationStyle = .overCurrentContext
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        
+    }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
         return self.formatter.date(from: "2015/01/01")!
@@ -76,18 +86,16 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         NSLog("change page to \(self.formatter.string(from: calendar.currentPage))")
         
+        
     }
-    
+    var i = 1
     func calendar(_ calendar: FSCalendar, didSelect date: Date) {
-        NSLog("calendar did select date \(self.formatter.string(from: date))")
+        //        NSLog("calendar did select date \(self.formatter.string(from: date))")
         
-        self.viewInfo.isHidden = false
-        let rect = CGRect(x: 0, y: 0, width: 0, height: 65)
-        calendarHeightConstraint.constant = rect.height
-        
-        
-        
-        
+        self.calendar.setScope(.week, animated: true)
+        self.viewInfo.alpha = 1
+        addSubButton()
+        valueToPass = self.formatter.string(from: date)
         
     }
     
@@ -99,6 +107,14 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         let day: Int! = self.gregorian.component(.day, from: date)
         return [13,24].contains(day) ? UIImage(named: "icon_cat") : nil
+    }
+    
+    // delay
+    func delay(_ seconds: Int, closure: @escaping ()->()) {
+        let time = DispatchTime.now() + .seconds(seconds)
+        DispatchQueue.main.asyncAfter(deadline: time) {
+            closure()
+        }
     }
     
 }

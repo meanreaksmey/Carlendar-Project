@@ -3,7 +3,8 @@ platform :ios, '10.0'
 use_frameworks!
 
 target “Calendar-Project” do
- pod 'FSCalendar'
+    pod 'FSCalendar'
+    pod "FontAwesomeKit/FontAwesome", :git => 'https://github.com/PrideChung/FontAwesomeKit.git'
 end
 
 
